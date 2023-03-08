@@ -39,23 +39,30 @@
             </section>
 
             <section class="summary">
-                <strong>Order Details</strong>
+                <strong>Detail de la commande</strong>
                 <table>
                     <thead>
                         <tr>
-                            <th>Item</th>
+                            <th>Quantité</th>
+                            <th>Produit</th>
                             <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1x Big Mac</td>
-                            <td>5.99</td>
+                        <tr v-for="product in products">
+                            <template v-if="product.active">
+
+                                <td>{{product.quantity}}</td>
+                                <td>{{product.name}}</td>
+                                <td>{{ (product.price * product.quantity).toFixed(2)}}</td>
+
+                            </template>
                         </tr>
                         
                         <tr>
                             <th>Total</th>
-                            <th>5.99</th>
+                            <th></th>
+                            <th>0.00</th>
                         </tr>
                     </tbody>
                 </table>
